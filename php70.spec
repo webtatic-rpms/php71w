@@ -835,7 +835,7 @@ Provides: php-tidy%{?_isa} = %{version}-%{release}
 The %{name}-tidy package contains a dynamic shared object that will add
 support for using the tidy library to PHP.
 
-%package mssql
+%package pdo_dblib
 Summary: MSSQL database module for PHP
 Group: Development/Languages
 # All files licensed under PHP version 3.01
@@ -849,10 +849,10 @@ Provides: php-pdo_dblib, php-pdo_dblib%{?_isa}
 Provides: php-mssql = %{version}-%{release}
 Provides: php-mssql%{?_isa} = %{version}-%{release}
 %endif
-Provides: %{name}-pdo_dblib, %{name}-pdo_dblib%{?_isa}
+Provides: %{name}-mssql, %{name}-mssql%{?_isa}
 
-%description mssql
-The %{name}-mssql package contains a dynamic shared object that will
+%description pdo_dblib
+The %{name}-pdo_dblib package contains a dynamic shared object that will
 add MSSQL database support to PHP.  It uses the TDS (Tabular
 DataStream) protocol through the freetds library, hence any
 database server which supports TDS can be accessed.
@@ -1623,7 +1623,6 @@ cat files.mysqlnd_mysqli \
     >> files.mysqlnd
 
 # Split out the PDO modules
-cat files.pdo_dblib >> files.mssql
 cat files.pdo_pgsql >> files.pgsql
 cat files.pdo_odbc >> files.odbc
 cat files.pdo_firebird >> files.interbase
@@ -1890,7 +1889,7 @@ fi
 %files pdo -f files.pdo
 %files mcrypt -f files.mcrypt
 %files tidy -f files.tidy
-%files mssql -f files.mssql
+%files pdo_dblib -f files.pdo_dblib
 %files pspell -f files.pspell
 %files intl -f files.intl
 %files process -f files.process
@@ -1908,3 +1907,4 @@ fi
 - update apiver, zendver, pdover, zipver, jsonver to upstream versions
 - update embedded libphp5 to libphp7
 - remove non-existant regex_COPYRIGHT
+- rename mssql package to pdo_dblib
