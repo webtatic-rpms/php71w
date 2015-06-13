@@ -305,7 +305,6 @@ Provides: php-core = %{version}, php-core%{?_isa} = %{version}
 Provides: php-ctype, php-ctype%{?_isa}
 Provides: php-curl, php-curl%{?_isa}
 Provides: php-date, php-date%{?_isa}
-Provides: php-ereg, php-ereg%{?_isa}
 Provides: php-exif, php-exif%{?_isa}
 Provides: php-fileinfo, php-fileinfo%{?_isa}
 Provides: php-pecl-Fileinfo = %{fileinfover}, php-pecl-Fileinfo%{?_isa} = %{fileinfover}
@@ -352,7 +351,6 @@ Provides: %{name}-core = %{version}, %{name}-core%{?_isa} = %{version}
 Provides: %{name}-ctype, %{name}-ctype%{?_isa}
 Provides: %{name}-curl, %{name}-curl%{?_isa}
 Provides: %{name}-date, %{name}-date%{?_isa}
-Provides: %{name}-ereg, %{name}-ereg%{?_isa}
 Provides: %{name}-exif, %{name}-exif%{?_isa}
 Provides: %{name}-fileinfo, %{name}-fileinfo%{?_isa}
 Provides: %{name}-pecl-Fileinfo = %{fileinfover}, %{name}-pecl-Fileinfo%{?_isa} = %{fileinfover}
@@ -992,7 +990,6 @@ support for using the enchant library to PHP.
 # Prevent %%doc confusion over LICENSE files
 cp Zend/LICENSE Zend/ZEND_LICENSE
 cp TSRM/LICENSE TSRM_LICENSE
-cp ext/ereg/regex/COPYRIGHT regex_COPYRIGHT
 cp ext/gd/libgd/README libgd_README
 cp ext/gd/libgd/COPYING libgd_COPYING
 cp sapi/fpm/LICENSE fpm_LICENSE
@@ -1915,3 +1912,4 @@ fi
 - fork php56w package
 - update to php-5.7.0alpha1
 - update dlopen, libdb and odbctimer patches
+- remove ereg extension
