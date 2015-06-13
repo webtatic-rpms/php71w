@@ -1231,7 +1231,6 @@ with_shared="--with-imap=shared --with-imap-ssl \
       --enable-phar=shared \
       --with-mcrypt=shared,%{_root_prefix} \
       --with-tidy=shared,%{_root_prefix} \
-      --with-mssql=shared,%{_root_prefix} \
       --enable-sysvmsg=shared --enable-sysvshm=shared --enable-sysvsem=shared \
       --enable-shmop=shared \
       --enable-posix=shared \
@@ -1578,7 +1577,7 @@ for mod in pgsql odbc ldap snmp xmlrpc imap \
 %endif
     interbase pdo_firebird \
     enchant phar fileinfo intl \
-    mcrypt tidy pdo_dblib mssql pspell curl wddx \
+    mcrypt tidy pdo_dblib pspell curl wddx \
     posix shmop sysvshm sysvsem sysvmsg recode xml; do
 
     # Make sure wddx is loaded after the xml extension, which it depends on
@@ -1905,7 +1904,7 @@ fi
 - fork php56w package
 - update to php-5.7.0alpha1
 - update dlopen, libdb and odbctimer patches
-- remove ereg and mysql extension
+- remove ereg, mysql and mssql extension
 - update apiver, zendver, pdover, zipver, jsonver to upstream versions
 - update embedded libphp5 to libphp7
 - remove non-existant regex_COPYRIGHT
