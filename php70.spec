@@ -1669,6 +1669,10 @@ rm -rf $RPM_BUILD_ROOT%{_libdir}/php/modules/*.a \
        $RPM_BUILD_ROOT%{_datadir}/pear \
        $RPM_BUILD_ROOT%{_libdir}/libphp7.la
 
+%if %{with_fpm}
+rm -rf $RPM_BUILD_ROOT%{_sysconfdir}/php-fpm.d/www.conf.default
+%endif
+
 # Remove irrelevant docs
 rm -f README.{Zeus,QNX,CVS-RULES}
 
