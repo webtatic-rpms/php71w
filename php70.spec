@@ -89,14 +89,16 @@
 %global db_devel  libdb-devel
 %endif
 
+%global rcver alpha1
+
 Summary: PHP scripting language for creating dynamic web sites
 %if 0%{?scl:1}
 Name: %{?scl_prefix}php
 %else
-Name: php56w
+Name: php70w
 %endif
-Version: 5.6.10
-Release: 1%{?rcver:.%{rcver}}%{?dist}
+Version: 7.0.0
+Release: 0.1%{?rcver:.%{rcver}}%{?dist}
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
 # TSRM is licensed under BSD
@@ -123,14 +125,14 @@ Source51: opcache-default.blacklist
 Patch5: php-5.2.0-includedir.patch
 Patch6: php-5.2.4-embed.patch
 Patch7: php-5.3.0-recode.patch
-Patch8: php-5.4.7-libdb.patch
+Patch8: php-7.0.0-libdb.patch
 
 # Fixes for extension modules
 # https://bugs.php.net/63171 no odbc call during timeout
-Patch21: php-5.4.7-odbctimer.patch
+Patch21: php-7.0.0-odbctimer.patch
 
 # Functional changes
-Patch40: php-5.4.0-dlopen.patch
+Patch40: php-7.0.0-dlopen.patch
 Patch42: php-5.5.25-systzdata-v12.patch
 # See http://bugs.php.net/53436
 Patch43: php-5.4.0-phpize.patch
@@ -1909,85 +1911,7 @@ fi
 %files mysqlnd -f files.mysqlnd
 
 %changelog
-* Thu Jun 11 2015 Andy Thompson <andy@webtatic.com> - 5.6.10-1
-- update to php-5.6.10
-- update opcachever to upstream latest version
-
-* Fri May 15 2015 Andy Thompson <andy@webtatic.com> - 5.6.9-1
-- update to php-5.6.9
-- update systzdata patch to support latest upstream
-- update zipver to reflect version in source
-
-* Thu Apr 16 2015 Andy Thompson <andy@webtatic.com> - 5.6.8-1
-- update to php-5.6.8
-
-* Sat Mar 21 2015 Andy Thompson <andy@webtatic.com> - 5.6.7-1
-- update to php-5.6.7
-
-* Thu Feb 19 2015 Andy Thompson <andy@webtatic.com> - 5.6.6-1
-- update to php-5.6.6
-
-* Thu Jan 22 2015 Andy Thompson <andy@webtatic.com> - 5.6.5-1
-- update to php-5.6.5
-
-* Fri Dec 19 2014 Andy Thompson <andy@webtatic.com> - 5.6.4-1
-- update to php-5.6.4
-
-* Thu Nov 13 2014 Andy Thompson <andy@webtatic.com> - 5.6.3-1
-- update to php-5.6.3
-
-* Fri Oct 17 2014 Andy Thompson <andy@webtatic.com> - 5.6.2-1
-- update to php-5.6.2
-
-* Fri Oct 03 2014 Andy Thompson <andy@webtatic.com> - 5.6.1-1
-- update to php-5.6.1
-
-* Thu Oct 02 2014 Andy Thompson <andy@webtatic.com> - 5.6.0-2
-- Add tmpfiles.d config to recreate run directory
-
-* Thu Aug 28 2014 Andy Thompson <andy@webtatic.com> - 5.6.0-1
-- update to php-5.6.0
-
-* Fri Aug 15 2014 Andy Thompson <andy@webtatic.com> - 5.6.0-0.11.RC4
-- update to php-5.6.0RC4
-
-* Fri Aug 01 2014 Andy Thompson <andy@webtatic.com> - 5.6.0-0.10.RC3
-- update to php-5.6.0RC2
-- remove patch for upstream fix
-
-* Fri Jul 04 2014 Andy Thompson <andy@webtatic.com> - 5.6.0-0.9.RC2
-- update to php-5.6.0RC2
-- add patch for broken phpdbg man page install
-- add phpdbg man page to phpdbg package
-
-* Fri Jun 20 2014 Andy Thompson <andy@webtatic.com> - 5.6.0-0.8.RC1
-- update to php-5.6.0RC1
-
-* Sat Jun 07 2014 Andy Thompson <andy@webtatic.com> - 5.6.0-0.7.beta4
-- update to php-5.6.0beta4
-
-* Fri May 16 2014 Andy Thompson <andy@webtatic.com> - 5.6.0-0.6.beta3
-- update to php-5.6.0beta3
-- remove patch for #67186 now fixed upstream
-
-* Fri May 02 2014 Andy Thompson <andy@webtatic.com> - 5.6.0-0.5.beta2
-- update to php-5.6.0beta2
-- add patch for mysqli build failure #67186
-
-* Sun Apr 13 2014 Andy Thompson <andy@webtatic.com> - 5.6.0-0.4.beta1
-- update to php-5.6.0beta1
-
-* Sat Mar 15 2014 Andy Thompson <andy@webtatic.com> - 5.6.0-0.3.alpha3
-- update to php-5.6.0alpha3
-- remove patch for mysql build failure, now in upstream
-- replace opcache version constant with new constant
-
-* Sun Feb 16 2014 Andy Thompson <andy@webtatic.com> - 5.6.0-0.2.alpha2
-- update to php-5.6.0alpha2
-- add patch for mysqli build failure
-- update the php.ini to latest
-
-* Sun Feb 02 2014 Andy Thompson <andy@webtatic.com> - 5.6.0-0.1.alpha1
-- fork php55w package
-- update to php-5.6.0alpha1
-- add php56w-phpdbg package output
+* Sat Jun 13 2015 Andy Thompson <andy@webtatic.com> - 5.7.0-0.1.alpha1
+- fork php56w package
+- update to php-5.7.0alpha1
+- update dlopen, libdb and odbctimer patches
