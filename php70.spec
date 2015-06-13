@@ -14,14 +14,14 @@
 %endif
 
 # API/ABI check
-%global apiver      20131106
-%global zendver     20131226
-%global pdover      20080721
+%global apiver      20131218
+%global zendver     20141001
+%global pdover      20150127
 # Extension version
 %global fileinfover 1.0.5
 %global pharver     2.0.2
-%global zipver      1.12.5
-%global jsonver     1.2.1
+%global zipver      1.13.0dev
+%global jsonver     1.4.0
 %global opcachever  7.0.6-dev
 
 # Adds -z now to the linker flags
@@ -1073,7 +1073,7 @@ if test "$ver" != "%{jsonver}"; then
    : Update the jsonver macro and rebuild.
    exit 1
 fi
-ver=$(sed -n '/#define PHP_ZENDOPCACHE_VERSION /{s/.* "//;s/".*$//;p}' ext/opcache/ZendAccelerator.h)
+ver=$(sed -n '/#define PHP_ZENDOPCACHE_VERSION /{s/.*\s"//;s/".*$//;p}' ext/opcache/ZendAccelerator.h)
 if test "$ver" != "%{opcachever}"; then
    : Error: Upstream OPcache version is now ${ver}, expecting %{opcachever}.
    : Update the opcachever macro and rebuild.
@@ -1913,3 +1913,4 @@ fi
 - update to php-5.7.0alpha1
 - update dlopen, libdb and odbctimer patches
 - remove ereg extension
+- update apiver, zendver, pdover, zipver, jsonver to upstream versions
