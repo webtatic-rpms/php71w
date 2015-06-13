@@ -1773,7 +1773,7 @@ fi
 
 %files common -f files.common
 %doc CODING_STANDARDS CREDITS EXTENSIONS LICENSE NEWS README*
-%doc Zend/ZEND_* TSRM_LICENSE regex_COPYRIGHT
+%doc Zend/ZEND_* TSRM_LICENSE
 %doc libmagic_LICENSE
 %doc phar_LICENSE
 %doc php.ini-*
@@ -1908,3 +1908,4 @@ fi
 - remove ereg and mysql extension
 - update apiver, zendver, pdover, zipver, jsonver to upstream versions
 - update embedded libphp5 to libphp7
+- remove non-existant regex_COPYRIGHT
