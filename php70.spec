@@ -28,7 +28,7 @@
 %global _hardened_build 1
 
 # version used for php embedded library soname
-%global embed_version 5.6
+%global embed_version 7.0
 
 %global mysql_sock %(mysql_config --socket 2>/dev/null || echo /var/lib/mysql/mysql.sock)
 
@@ -1303,7 +1303,7 @@ popd
 %endif
 
 # Build for inclusion as embedded script language into applications,
-# /usr/lib[64]/libphp5.so
+# /usr/lib[64]/libphp7.so
 pushd build-embedded
 build --enable-embed \
       --without-mysql \
@@ -1445,20 +1445,20 @@ install -m 755 -d $RPM_BUILD_ROOT%{_libdir}/php/pear \
 
 # install the DSO
 install -m 755 -d $RPM_BUILD_ROOT%{_httpd_moddir}
-install -m 755 build-apache/libs/libphp5.so $RPM_BUILD_ROOT%{_httpd_moddir}
+install -m 755 build-apache/libs/libphp7.so $RPM_BUILD_ROOT%{_httpd_moddir}
 
 %if %{with_zts}
 # install the ZTS DSO
-install -m 755 build-zts/libs/libphp5.so $RPM_BUILD_ROOT%{_httpd_moddir}/libphp5-zts.so
+install -m 755 build-zts/libs/libphp7.so $RPM_BUILD_ROOT%{_httpd_moddir}/libphp7-zts.so
 %endif
 
 # Apache config fragment
 %if %{?scl:1}0
 install -m 755 -d $RPM_BUILD_ROOT%{_root_httpd_moddir}
-ln -s %{_httpd_moddir}/libphp5.so      $RPM_BUILD_ROOT%{_root_httpd_moddir}/lib%{name}5.so
+ln -s %{_httpd_moddir}/libphp7.so      $RPM_BUILD_ROOT%{_root_httpd_moddir}/lib%{name}7.so
 %endif
-sed -e 's/libphp5/lib%{_name}5/' %{SOURCE9} >modconf
-sed -e 's/libphp5/lib%{_name}5/' %{SOURCE10} >ztsmodconf
+sed -e 's/libphp7/lib%{_name}7/' %{SOURCE9} >modconf
+sed -e 's/libphp7/lib%{_name}7/' %{SOURCE10} >ztsmodconf
 %if "%{_httpd_modconfdir}" == "%{_httpd_confdir}"
 # Single config file with httpd < 2.4 (fedora <= 17)
 install -D -m 644 modconf $RPM_BUILD_ROOT%{_httpd_confdir}/%{_name}.conf
@@ -1669,7 +1669,7 @@ rm -rf $RPM_BUILD_ROOT%{_libdir}/php/modules/*.a \
        $RPM_BUILD_ROOT%{_libdir}/php-zts/modules/*.a \
        $RPM_BUILD_ROOT%{_bindir}/{phptar} \
        $RPM_BUILD_ROOT%{_datadir}/pear \
-       $RPM_BUILD_ROOT%{_libdir}/libphp5.la
+       $RPM_BUILD_ROOT%{_libdir}/libphp7.la
 
 # Remove irrelevant docs
 rm -f README.{Zeus,QNX,CVS-RULES}
@@ -1754,9 +1754,9 @@ fi
 %postun embedded -p /sbin/ldconfig
 
 %files
-%{_httpd_moddir}/libphp5.so
+%{_httpd_moddir}/libphp7.so
 %if %{with_zts}
-%{_httpd_moddir}/libphp5-zts.so
+%{_httpd_moddir}/libphp7-zts.so
 %endif
 %if 0%{?scl:1}
 %dir %{_libdir}/httpd
@@ -1854,8 +1854,8 @@ fi
 %{_root_sysconfdir}/rpm/macros.%{_name}
 
 %files embedded
-%{_libdir}/libphp5.so
-%{_libdir}/libphp5-%{embed_version}.so
+%{_libdir}/libphp7.so
+%{_libdir}/libphp7-%{embed_version}.so
 
 %files opcache
 %attr(755,root,root) %{_libdir}/php/modules/opcache.so
@@ -1907,3 +1907,4 @@ fi
 - update dlopen, libdb and odbctimer patches
 - remove ereg and mysql extension
 - update apiver, zendver, pdover, zipver, jsonver to upstream versions
+- update embedded libphp5 to libphp7
