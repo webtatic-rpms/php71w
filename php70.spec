@@ -45,7 +45,7 @@
 %global with_fpm 0
 %endif
 
-# Build mysql/mysqli/pdo extensions using libmysqlclient or only mysqlnd
+# Build mysqli/pdo extensions using libmysqlclient or only mysqlnd
 %global with_libmysql 1
 
 # Build ZTS extension or only NTS
@@ -1195,7 +1195,6 @@ with_shared="--with-imap=shared --with-imap-ssl \
       --with-xmlrpc=shared \
       --with-ldap=shared --with-ldap-sasl \
       --enable-mysqlnd=shared \
-      --with-mysql=shared,mysqlnd \
       --with-mysqli=shared,mysqlnd \
       --with-mysql-sock=%{mysql_sock} \
       --with-interbase=shared,%{_libdir}/firebird \
@@ -1253,7 +1252,6 @@ with_shared="--with-imap=shared --with-imap-ssl \
       --enable-opcache"
 
 with_shared2="--enable-pdo=shared \
-      --with-mysql=shared,%{_root_prefix} \
       --with-mysqli=shared,%{mysql_config} \
       --with-pdo-mysql=shared,%{mysql_config} \
       --without-pdo-sqlite"
@@ -1390,8 +1388,6 @@ make -C build-ztscli install \
      INSTALL_ROOT=$RPM_BUILD_ROOT
 
 # rename extensions build with mysqlnd
-mv $RPM_BUILD_ROOT%{_libdir}/php-zts/modules/mysql.so \
-   $RPM_BUILD_ROOT%{_libdir}/php-zts/modules/mysqlnd_mysql.so
 mv $RPM_BUILD_ROOT%{_libdir}/php-zts/modules/mysqli.so \
    $RPM_BUILD_ROOT%{_libdir}/php-zts/modules/mysqlnd_mysqli.so
 mv $RPM_BUILD_ROOT%{_libdir}/php-zts/modules/pdo_mysql.so \
@@ -1426,8 +1422,6 @@ make -C build-phpdbg install-phpdbg INSTALL_ROOT=$RPM_BUILD_ROOT
 make -C build-cli install INSTALL_ROOT=$RPM_BUILD_ROOT
 
 # rename extensions build with mysqlnd
-mv $RPM_BUILD_ROOT%{_libdir}/php/modules/mysql.so \
-   $RPM_BUILD_ROOT%{_libdir}/php/modules/mysqlnd_mysql.so
 mv $RPM_BUILD_ROOT%{_libdir}/php/modules/mysqli.so \
    $RPM_BUILD_ROOT%{_libdir}/php/modules/mysqlnd_mysqli.so
 mv $RPM_BUILD_ROOT%{_libdir}/php/modules/pdo_mysql.so \
@@ -1571,7 +1565,7 @@ install -m 644 %{SOURCE51} $RPM_BUILD_ROOT%{_sysconfdir}/php-zts.d/opcache-defau
 
 # Generate files lists and stub .ini files for each subpackage
 for mod in pgsql odbc ldap snmp xmlrpc imap \
-    mysqlnd mysqlnd_mysql mysqlnd_mysqli pdo_mysqlnd \
+    mysqlnd mysqlnd_mysqli pdo_mysqlnd \
     mbstring gd dom xsl soap bcmath dba xmlreader xmlwriter \
     bz2 calendar ctype exif ftp gettext gmp iconv simplexml \
     sockets tokenizer \
@@ -1580,7 +1574,7 @@ for mod in pgsql odbc ldap snmp xmlrpc imap \
     sqlite3  \
 %endif
 %if %{with_libmysql}
-    mysql mysqli pdo_mysql \
+    mysqli pdo_mysql \
 %endif
     interbase pdo_firebird \
     enchant phar fileinfo intl \
@@ -1618,15 +1612,14 @@ mv files.xml files.xmlext
 # The dom, xsl and xml* modules are all packaged in php-xml
 cat files.dom files.xsl files.xml{reader,writer} files.wddx > files.xml
 
-# The mysql and mysqli modules are both packaged in php-mysql
+# The pdo_mysql and mysqli modules are both packaged in php-mysql
 %if %{with_libmysql}
 cat files.mysqli >> files.mysql
 cat files.pdo_mysql >> files.mysql
 %endif
 
 # mysqlnd
-cat files.mysqlnd_mysql \
-    files.mysqlnd_mysqli \
+cat files.mysqlnd_mysqli \
     files.pdo_mysqlnd \
     >> files.mysqlnd
 
@@ -1912,5 +1905,5 @@ fi
 - fork php56w package
 - update to php-5.7.0alpha1
 - update dlopen, libdb and odbctimer patches
-- remove ereg extension
+- remove ereg and mysql extension
 - update apiver, zendver, pdover, zipver, jsonver to upstream versions
