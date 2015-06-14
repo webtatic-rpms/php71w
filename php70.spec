@@ -98,7 +98,7 @@ Name: %{?scl_prefix}php
 Name: php70w
 %endif
 Version: 7.0.0
-Release: 0.1%{?rcver:.%{rcver}}%{?dist}
+Release: 0.2%{?rcver:.%{rcver}}%{?dist}
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
 # TSRM is licensed under BSD
@@ -130,6 +130,8 @@ Patch8: php-7.0.0-libdb.patch
 # Fixes for extension modules
 # https://bugs.php.net/63171 no odbc call during timeout
 Patch21: php-7.0.0-odbctimer.patch
+# Fixed bug #69823 (PHP 7.0.0alpha1 segmentation fault when exactly 33 extensions are loaded)
+Patch22: php-7.0.0-mhashinit.patch
 
 # Functional changes
 Patch40: php-7.0.0-dlopen.patch
@@ -976,6 +978,7 @@ support for using the enchant library to PHP.
 %patch8 -p1 -b .libdb
 
 %patch21 -p1 -b .odbctimer
+%patch22 -p1 -b .mhashinit
 
 %patch40 -p1 -b .dlopen
 %patch42 -p1 -b .systzdata
@@ -1903,6 +1906,9 @@ fi
 %files mysqlnd -f files.mysqlnd
 
 %changelog
+* Sun Jun 14 2015 Andy Thompson <andy@webtatic.com> - 5.7.0-0.2.alpha1
+- add upstream patch for bug #69823
+
 * Sat Jun 13 2015 Andy Thompson <andy@webtatic.com> - 5.7.0-0.1.alpha1
 - fork php56w package
 - update to php-5.7.0alpha1
