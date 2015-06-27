@@ -130,8 +130,6 @@ Patch8: php-7.0.0-libdb.patch
 # Fixes for extension modules
 # https://bugs.php.net/63171 no odbc call during timeout
 Patch21: php-7.0.0-odbctimer.patch
-# Fixed bug #69823 (PHP 7.0.0alpha1 segmentation fault when exactly 33 extensions are loaded)
-Patch22: php-7.0.0-mhashinit.patch
 
 # Functional changes
 Patch40: php-7.0.0-dlopen.patch
@@ -978,7 +976,6 @@ support for using the enchant library to PHP.
 %patch8 -p1 -b .libdb
 
 %patch21 -p1 -b .odbctimer
-%patch22 -p1 -b .mhashinit
 
 %patch40 -p1 -b .dlopen
 %patch42 -p1 -b .systzdata
@@ -1908,6 +1905,7 @@ fi
 %changelog
 * Sat Jun 27 2015 Andy Thompson <andy@webtatic.com> - 5.7.0-0.3.alpha2
 - update to php-5.7.0alpha2
+- remove patch for upstream bug #69823 fixed upstream
 
 * Sun Jun 14 2015 Andy Thompson <andy@webtatic.com> - 5.7.0-0.2.alpha1
 - add upstream patch for bug #69823
