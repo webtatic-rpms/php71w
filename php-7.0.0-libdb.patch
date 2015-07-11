@@ -83,4 +83,4 @@
 +#endif
  	if (handlers.s) {
  		smart_str_0(&handlers);
- 		php_info_print_table_row(2, "Supported handlers", handlers.s->val);
+ 		php_info_print_table_row(2, "Supported handlers", ZSTR_VAL(handlers.s));

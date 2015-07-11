@@ -1905,6 +1905,7 @@ fi
 %changelog
 * Sat Jul 11 2015 Andy Thompson <andy@webtatic.com> - 5.7.0-0.4.beta1
 - update to php-5.7.0beta1
+- recreate libdb patch from upstream changes
 
 * Sat Jun 27 2015 Andy Thompson <andy@webtatic.com> - 5.7.0-0.3.alpha2
 - update to php-5.7.0alpha2
