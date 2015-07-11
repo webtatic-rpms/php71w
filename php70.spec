@@ -89,7 +89,7 @@
 %global db_devel  libdb-devel
 %endif
 
-%global rcver alpha2
+%global rcver beta1
 
 Summary: PHP scripting language for creating dynamic web sites
 %if 0%{?scl:1}
@@ -98,7 +98,7 @@ Name: %{?scl_prefix}php
 Name: php70w
 %endif
 Version: 7.0.0
-Release: 0.3%{?rcver:.%{rcver}}%{?dist}
+Release: 0.4%{?rcver:.%{rcver}}%{?dist}
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
 # TSRM is licensed under BSD
@@ -1903,6 +1903,9 @@ fi
 %files mysqlnd -f files.mysqlnd
 
 %changelog
+* Sat Jul 11 2015 Andy Thompson <andy@webtatic.com> - 5.7.0-0.4.beta1
+- update to php-5.7.0beta1
+
 * Sat Jun 27 2015 Andy Thompson <andy@webtatic.com> - 5.7.0-0.3.alpha2
 - update to php-5.7.0alpha2
 - remove patch for upstream bug #69823 fixed upstream
