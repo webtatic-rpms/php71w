@@ -1903,26 +1903,26 @@ fi
 %files mysqlnd -f files.mysqlnd
 
 %changelog
-* Sun Aug 09 2015 Andy Thompson <andy@webtatic.com> - 5.7.0-0.6.beta3
-- update to php-5.7.0beta3
+* Sun Aug 09 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.6.beta3
+- update to php-7.0.0beta3
 
-* Fri Jul 24 2015 Andy Thompson <andy@webtatic.com> - 5.7.0-0.5.beta2
-- update to php-5.7.0beta2
+* Fri Jul 24 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.5.beta2
+- update to php-7.0.0beta2
 
-* Sat Jul 11 2015 Andy Thompson <andy@webtatic.com> - 5.7.0-0.4.beta1
-- update to php-5.7.0beta1
+* Sat Jul 11 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.4.beta1
+- update to php-7.0.0beta1
 - recreate libdb patch from upstream changes
 
-* Sat Jun 27 2015 Andy Thompson <andy@webtatic.com> - 5.7.0-0.3.alpha2
-- update to php-5.7.0alpha2
+* Sat Jun 27 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.3.alpha2
+- update to php-7.0.0alpha2
 - remove patch for upstream bug #69823 fixed upstream
 
-* Sun Jun 14 2015 Andy Thompson <andy@webtatic.com> - 5.7.0-0.2.alpha1
+* Sun Jun 14 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.2.alpha1
 - add upstream patch for bug #69823
 
-* Sat Jun 13 2015 Andy Thompson <andy@webtatic.com> - 5.7.0-0.1.alpha1
+* Sat Jun 13 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.1.alpha1
 - fork php56w package
-- update to php-5.7.0alpha1
+- update to php-7.0.0alpha1
 - update dlopen, libdb and odbctimer patches
 - remove ereg, mysql and mssql extension
 - update apiver, zendver, pdover, zipver, jsonver to upstream versions
