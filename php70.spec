@@ -133,7 +133,7 @@ Patch21: php-7.0.0-odbctimer.patch
 
 # Functional changes
 Patch40: php-7.0.0-dlopen.patch
-Patch42: php-5.5.25-systzdata-v12.patch
+Patch42: php-7.0.0-systzdata-v13.patch
 # See http://bugs.php.net/53436
 Patch43: php-5.4.0-phpize.patch
 # Use -lldap_r for OpenLDAP
@@ -1905,6 +1905,7 @@ fi
 %changelog
 * Fri Aug 21 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.7.RC1
 - update to php-7.0.0RC1
+- adapt systzdata patch for upstream changes
 
 * Sun Aug 09 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.6.beta3
 - update to php-7.0.0beta3
