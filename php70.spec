@@ -20,7 +20,7 @@
 # Extension version
 %global fileinfover 1.0.5
 %global pharver     2.0.2
-%global zipver      1.13.0dev
+%global zipver      1.13.0
 %global jsonver     1.4.0
 %global opcachever  7.0.6-dev
 
@@ -1905,6 +1905,7 @@ fi
 %changelog
 * Sun Sep 20 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.9.RC3
 - update to php-7.0.0RC3
+- update zipver to upstream version
 
 * Fri Sep 04 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.8.RC2
 - update to php-7.0.0RC2
