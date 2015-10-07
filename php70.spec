@@ -98,7 +98,7 @@ Name: %{?scl_prefix}php
 Name: php70w
 %endif
 Version: 7.0.0
-Release: 0.10%{?rcver:.%{rcver}}%{?dist}
+Release: 0.11%{?rcver:.%{rcver}}%{?dist}
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
 # TSRM is licensed under BSD
@@ -1903,6 +1903,9 @@ fi
 %files mysqlnd -f files.mysqlnd
 
 %changelog
+* Wed Oct 07 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.11.RC4
+- Update httpd configuration to use libphp7
+
 * Thu Oct 01 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.10.RC4
 - update to php-7.0.0RC4
 
