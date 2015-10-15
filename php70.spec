@@ -14,7 +14,7 @@
 %endif
 
 # API/ABI check
-%global apiver      20131218
+%global apiver      20151012
 %global zendver     20141001
 %global pdover      20150127
 # Extension version
@@ -1906,6 +1906,7 @@ fi
 %changelog
 * Thu Oct 15 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.13.RC5
 - update to php-7.0.0RC5
+- update apiver to upstream version
 
 * Sun Oct 11 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.12.RC4
 - Add php-fpm conditional restart on EL < 7
