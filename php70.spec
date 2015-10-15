@@ -103,7 +103,7 @@
 %global db_devel  libdb-devel
 %endif
 
-%global rcver RC4
+%global rcver RC5
 
 Summary: PHP scripting language for creating dynamic web sites
 %if 0%{?scl:1}
@@ -112,7 +112,7 @@ Name: %{?scl_prefix}php
 Name: php70w
 %endif
 Version: 7.0.0
-Release: 0.12%{?rcver:.%{rcver}}%{?dist}
+Release: 0.13%{?rcver:.%{rcver}}%{?dist}
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
 # TSRM is licensed under BSD
@@ -1904,6 +1904,9 @@ fi
 %files mysqlnd -f files.mysqlnd
 
 %changelog
+* Thu Oct 15 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.13.RC5
+- update to php-7.0.0RC5
+
 * Sun Oct 11 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.12.RC4
 - Add php-fpm conditional restart on EL < 7
 - Simplify spec conditionals
