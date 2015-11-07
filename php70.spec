@@ -112,7 +112,7 @@ Name: %{?scl_prefix}php
 Name: php70w
 %endif
 Version: 7.0.0
-Release: 0.14%{?rcver:.%{rcver}}%{?dist}
+Release: 0.15%{?rcver:.%{rcver}}%{?dist}
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
 # TSRM is licensed under BSD
@@ -1904,6 +1904,9 @@ fi
 %files mysqlnd -f files.mysqlnd
 
 %changelog
+* Sat Nov 07 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.15.RC6
+- update systzdata patch to fix bug
+
 * Thu Oct 15 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.14.RC6
 - update to php-7.0.0RC6
 
