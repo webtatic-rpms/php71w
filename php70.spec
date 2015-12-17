@@ -109,7 +109,7 @@ Name: %{?scl_prefix}php
 %else
 Name: php70w
 %endif
-Version: 7.0.0
+Version: 7.0.1
 Release: 1%{?rcver:.%{rcver}}%{?dist}
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
@@ -118,7 +118,7 @@ License: PHP and Zend and BSD
 Group: Development/Languages
 URL: http://www.php.net/
 
-Source0: https://downloads.php.net/~ab/php-%{version}%{?rcver}.tar.bz2
+Source0: https://secure.php.net/distributions/php-%{version}%{?rcver}.tar.bz2
 Source1: php.conf
 Source2: php.ini
 Source3: macros.php
@@ -1902,6 +1902,9 @@ fi
 %files mysqlnd -f files.mysqlnd
 
 %changelog
+* Thu Dec 17 2015 Andy Thompson <andy@webtatic.com> - 7.0.1-1
+- update to php-7.0.1
+
 * Wed Dec 02 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-1
 - update to php-7.0.0
 
