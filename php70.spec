@@ -137,7 +137,7 @@ Source51: opcache-default.blacklist
 Patch5: php-5.2.0-includedir.patch
 Patch6: php-5.2.4-embed.patch
 Patch7: php-5.3.0-recode.patch
-Patch8: php-7.0.0-libdb.patch
+Patch8: php-7.0.2-libdb.patch
 
 # Fixes for extension modules
 # https://bugs.php.net/63171 no odbc call during timeout
@@ -1902,8 +1902,9 @@ fi
 %files mysqlnd -f files.mysqlnd
 
 %changelog
-* Thu Jan 07 2016 Andy Thompson <andy@webtatic.com> - 7.0.2-1
+* Sat Jan 09 2016 Andy Thompson <andy@webtatic.com> - 7.0.2-1
 - update to php-7.0.2
+- adapt libdb patch for upstream changes
 
 * Thu Dec 17 2015 Andy Thompson <andy@webtatic.com> - 7.0.1-1
 - update to php-7.0.1
