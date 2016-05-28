@@ -153,7 +153,7 @@ Patch46: php-5.4.9-fixheader.patch
 # drop "Configure command" from phpinfo output
 Patch47: php-5.4.9-phpinfo.patch
 Patch48: php-5.5.0-icuconfig.patch
-Patch49: php-7.0.2-curltlsconst.patch
+Patch49: php-7.0.7-curltlsconst.patch
 
 # Fixes for tests
 
@@ -1904,6 +1904,7 @@ fi
 %changelog
 * Sat May 28 2016 Andy Thompson <andy@webtatic.com> - 7.0.7-1
 - update to php-7.0.7
+- update curltlsconst patch conflict with upstream
 
 * Sat Apr 30 2016 Andy Thompson <andy@webtatic.com> - 7.0.6-1
 - update to php-7.0.6
