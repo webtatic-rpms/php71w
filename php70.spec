@@ -22,7 +22,6 @@
 %global pharver     2.0.2
 %global zipver      1.13.3
 %global jsonver     1.4.0
-%global opcachever  7.0.6-dev
 
 # Adds -z now to the linker flags
 %global _hardened_build 1
@@ -893,14 +892,14 @@ Group: Development/Languages
 Requires: %{name}-common%{?_isa} = %{version}-%{release}
 %if 0%{!?scl:1}
 # For obsoleted pecl extension
-Provides: php-pecl-zendopcache = %{opcachever}, php-pecl-zendopcache%{?_isa} = %{opcachever}
-Provides: php-pecl(OPcache) = %{opcachever}, php-pecl(OPcache) = %{opcachever}
+Provides: php-pecl-zendopcache = %{version}, php-pecl-zendopcache%{?_isa} = %{version}
+Provides: php-pecl(OPcache) = %{version}, php-pecl(OPcache) = %{version}
 # Additional Provides for this package name
 Provides: php-opcache = %{version}-%{release}
 Provides: php-opcache%{?_isa} = %{version}-%{release}
 %endif
-Provides: %{name}-pecl-zendopcache = %{opcachever}, %{name}-pecl-zendopcache%{?_isa} = %{opcachever}
-Provides: %{name}-pecl(OPcache) = %{opcachever}, %{name}-pecl(OPcache) = %{opcachever}
+Provides: %{name}-pecl-zendopcache = %{version}, %{name}-pecl-zendopcache%{?_isa} = %{version}
+Provides: %{name}-pecl(OPcache) = %{version}, %{name}-pecl(OPcache) = %{version}
 
 %description opcache
 The %{name}-opcache package contains an opcode cache used for caching and
@@ -1083,12 +1082,6 @@ ver=$(sed -n '/#define PHP_JSON_VERSION /{s/.* "//;s/".*$//;p}' ext/json/php_jso
 if test "$ver" != "%{jsonver}"; then
    : Error: Upstream JSON version is now ${ver}, expecting %{jsonver}.
    : Update the jsonver macro and rebuild.
-   exit 1
-fi
-ver=$(sed -n '/#define PHP_ZENDOPCACHE_VERSION /{s/.*\s"//;s/".*$//;p}' ext/opcache/ZendAccelerator.h)
-if test "$ver" != "%{opcachever}"; then
-   : Error: Upstream OPcache version is now ${ver}, expecting %{opcachever}.
-   : Update the opcachever macro and rebuild.
    exit 1
 fi
 
@@ -1905,6 +1898,7 @@ fi
 * Thu Jun 23 2016 Andy Thompson <andy@webtatic.com> - 7.0.8-1
 - update to php-7.0.8
 - update zipver to upstream version
+- replace opcachever with version and remove version check
 
 * Sat May 28 2016 Andy Thompson <andy@webtatic.com> - 7.0.7-1
 - update to php-7.0.7
