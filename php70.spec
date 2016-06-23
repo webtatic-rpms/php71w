@@ -26,8 +26,11 @@
 # Adds -z now to the linker flags
 %global _hardened_build 1
 
+# version used for major release purposes
+%global major_release 7.0
+
 # version used for php embedded library soname
-%global embed_version 7.0
+%global embed_version %{major_release}
 
 %global mysql_sock %(mysql_config --socket 2>/dev/null || echo /var/lib/mysql/mysql.sock)
 
@@ -352,7 +355,7 @@ Provides: php-zlib, php-zlib%{?_isa}
 # Additional Provides for this package name
 Provides: php-common = %{version}-%{release}
 Provides: php-common%{?_isa} = %{version}-%{release}
-Conflicts: php-common < 5.5.0
+Conflicts: php-common < %{major_release}
 %endif
 # Provides for all builtin/shared modules:
 Provides: %{name}-bz2, %{name}-bz2%{?_isa}
@@ -1899,6 +1902,7 @@ fi
 - update to php-7.0.8
 - update zipver to upstream version
 - replace opcachever with version and remove version check
+- update conflicts version to 7.0
 
 * Sat May 28 2016 Andy Thompson <andy@webtatic.com> - 7.0.7-1
 - update to php-7.0.7
