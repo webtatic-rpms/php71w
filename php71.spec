@@ -195,19 +195,6 @@ Requires(pre): httpd
 %if %{with_dtrace}
 BuildRequires: systemtap-sdt-devel
 %endif
-%if 0%{!?scl:1}
-%if %{with_zts}
-Provides: php-zts = %{version}-%{release}
-Provides: php-zts%{?_isa} = %{version}-%{release}
-%endif
-Provides: php = %{version}-%{release}
-Provides: php%{?_isa} = %{version}-%{release}
-%endif
-Provides: %{?scl_prefix}mod_php = %{version}-%{release}
-%if %{with_zts}
-Provides: %{name}-zts = %{version}-%{release}
-Provides: %{name}-zts%{?_isa} = %{version}-%{release}
-%endif
 
 # Don't provides extensions, which are not shared library, as .so
 %{?filter_provides_in: %filter_provides_in %{_libdir}/php/modules/.*\.so$}
@@ -223,8 +210,33 @@ non-commercial database management systems, so writing a
 database-enabled webpage with PHP is fairly simple. The most common
 use of PHP coding is probably as a replacement for CGI scripts. 
 
-The %{name} package contains the module (often referred to as mod_php)
-which adds support for the PHP language to Apache HTTP Server.
+
+%package -n %{?scl_prefix}mod_%{name}
+Group: Development/Languages
+Summary: PHP module for the Apache HTTP Server
+BuildRequires: httpd-devel >= 2.0.46-1
+%if 0%{!?scl:1}
+%if %{with_zts}
+Provides: php-zts = %{version}-%{release}
+Provides: php-zts%{?_isa} = %{version}-%{release}
+%endif
+Provides: php = %{version}-%{release}
+Provides: php%{?_isa} = %{version}-%{release}
+# php engine for Apache httpd webserver
+Provides: php(httpd)
+%endif
+Provides: %{?scl_prefix}mod_php = %{version}-%{release}
+%if %{with_zts}
+Provides: %{name}-zts = %{version}-%{release}
+Provides: %{name}-zts%{?_isa} = %{version}-%{release}
+%endif
+Provides: %{name} = %{version}-%{release}
+Provides: %{name}%{?_isa} = %{version}-%{release}
+
+%description -n %{?scl_prefix}mod_%{name}
+
+The %{?scl_prefix}mod_%{name} package contains the module which adds support for the PHP
+language to Apache HTTP Server.
 
 %package cli
 Group: Development/Languages
@@ -1750,7 +1762,7 @@ fi
 %post embedded -p /sbin/ldconfig
 %postun embedded -p /sbin/ldconfig
 
-%files
+%files -n %{?scl_prefix}mod_%{name}
 %{_httpd_moddir}/libphp7.so
 %if %{with_zts}
 %{_httpd_moddir}/libphp7-zts.so
@@ -1903,3 +1915,4 @@ fi
 * Sat Aug 20 2016 Andy Thompson <andy@webtatic.com> - 7.1.0-0.1.beta3
 - fork php70w package
 - update to php-7.1.0beta3
+- rename php71w to mod_php71w
