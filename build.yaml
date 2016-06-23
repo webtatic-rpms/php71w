@@ -1,4 +1,4 @@
-name: php70w
+name: php71w
 builds:
   webtatic-el7:
     target: el7-development

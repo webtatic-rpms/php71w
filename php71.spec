@@ -27,7 +27,7 @@
 %global _hardened_build 1
 
 # version used for minor release purposes
-%global minor_release 7.0
+%global minor_release 7.1
 
 # version used for php embedded library soname
 %global embed_version %{minor_release}
@@ -105,14 +105,16 @@
 %global db_devel  libdb-devel
 %endif
 
+%global rcver beta3
+
 Summary: PHP scripting language for creating dynamic web sites
 %if 0%{?scl:1}
 Name: %{?scl_prefix}php
 %else
-Name: php70w
+Name: php71w
 %endif
-Version: 7.0.10
-Release: 1%{?rcver:.%{rcver}}%{?dist}
+Version: 7.1.0
+Release: 0.1%{?rcver:.%{rcver}}%{?dist}
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
 # TSRM is licensed under BSD
@@ -120,7 +122,7 @@ License: PHP and Zend and BSD
 Group: Development/Languages
 URL: http://www.php.net/
 
-Source0: https://secure.php.net/distributions/php-%{version}%{?rcver}.tar.bz2
+Source0: https://downloads.php.net/~davey/php-%{version}%{?rcver}.tar.bz2
 Source1: php.conf
 Source2: php.ini
 Source3: macros.php
@@ -1898,111 +1900,6 @@ fi
 %files mysqlnd -f files.mysqlnd
 
 %changelog
-* Sat Aug 20 2016 Andy Thompson <andy@webtatic.com> - 7.0.10-1
-- update to php-7.0.10
-- update zipver to upstream version
-
-* Thu Jul 21 2016 Andy Thompson <andy@webtatic.com> - 7.0.9-1
-- update to php-7.0.9
-
-* Thu Jun 23 2016 Andy Thompson <andy@webtatic.com> - 7.0.8-1
-- update to php-7.0.8
-- update zipver to upstream version
-- replace opcachever with version and remove version check
-- update conflicts version to 7.0
-
-* Sat May 28 2016 Andy Thompson <andy@webtatic.com> - 7.0.7-1
-- update to php-7.0.7
-- update curltlsconst patch conflict with upstream
-
-* Sat Apr 30 2016 Andy Thompson <andy@webtatic.com> - 7.0.6-1
-- update to php-7.0.6
-- remove odbctimer patch for upstream fix
-
-* Sat Apr 02 2016 Andy Thompson <andy@webtatic.com> - 7.0.5-1
-- update to php-7.0.5
-- update zipver to upstream version
-
-* Fri Mar 04 2016 Andy Thompson <andy@webtatic.com> - 7.0.4-1
-- update to php-7.0.4
-
-* Thu Feb 04 2016 Andy Thompson <andy@webtatic.com> - 7.0.3-1
-- update to php-7.0.3
-
-* Sun Jan 31 2016 Andy Thompson <andy@webtatic.com> - 7.0.2-2
-- Add curltlsconst patch to introduce backported curl constants
-
-* Sat Jan 09 2016 Andy Thompson <andy@webtatic.com> - 7.0.2-1
-- update to php-7.0.2
-- adapt libdb patch for upstream changes
-
-* Thu Dec 17 2015 Andy Thompson <andy@webtatic.com> - 7.0.1-1
-- update to php-7.0.1
-
-* Wed Dec 02 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-1
-- update to php-7.0.0
-
-* Mon Nov 30 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.18.RC8
-- update to php-7.0.0RC8
-
-* Fri Nov 13 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.16.RC7
-- update to php-7.0.0RC7
-
-* Sat Nov 07 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.15.RC6
-- update systzdata patch to fix bug
-
-* Thu Oct 15 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.14.RC6
-- update to php-7.0.0RC6
-
-* Thu Oct 15 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.13.RC5
-- update to php-7.0.0RC5
-- update apiver to upstream version
-- update zendver to upstream version
-
-* Sun Oct 11 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.12.RC4
-- Add php-fpm conditional restart on EL < 7
-- Simplify spec conditionals
-
-* Wed Oct 07 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.11.RC4
-- Update httpd configuration to use libphp7
-
-* Thu Oct 01 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.10.RC4
-- update to php-7.0.0RC4
-
-* Sun Sep 20 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.9.RC3
-- update to php-7.0.0RC3
-- update zipver to upstream version
-
-* Fri Sep 04 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.8.RC2
-- update to php-7.0.0RC2
-
-* Fri Aug 21 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.7.RC1
-- update to php-7.0.0RC1
-- adapt systzdata patch for upstream changes
-
-* Sun Aug 09 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.6.beta3
-- update to php-7.0.0beta3
-
-* Fri Jul 24 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.5.beta2
-- update to php-7.0.0beta2
-
-* Sat Jul 11 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.4.beta1
-- update to php-7.0.0beta1
-- recreate libdb patch from upstream changes
-
-* Sat Jun 27 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.3.alpha2
-- update to php-7.0.0alpha2
-- remove patch for upstream bug #69823 fixed upstream
-
-* Sun Jun 14 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.2.alpha1
-- add upstream patch for bug #69823
-
-* Sat Jun 13 2015 Andy Thompson <andy@webtatic.com> - 7.0.0-0.1.alpha1
-- fork php56w package
-- update to php-7.0.0alpha1
-- update dlopen, libdb and odbctimer patches
-- remove ereg, mysql and mssql extension
-- update apiver, zendver, pdover, zipver, jsonver to upstream versions
-- update embedded libphp5 to libphp7
-- remove non-existant regex_COPYRIGHT
-- rename mssql package to pdo_dblib
+* Sat Aug 20 2016 Andy Thompson <andy@webtatic.com> - 7.1.0-0.1.beta3
+- fork php70w package
+- update to php-7.1.0beta3
