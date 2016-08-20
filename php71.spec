@@ -15,7 +15,7 @@
 
 # API/ABI check
 %global apiver      20151012
-%global zendver     20151012
+%global zendver     20160303
 %global pdover      20150127
 # Extension version
 %global fileinfover 1.0.5
