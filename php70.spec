@@ -20,7 +20,7 @@
 # Extension version
 %global fileinfover 1.0.5
 %global pharver     2.0.2
-%global zipver      1.13.3
+%global zipver      1.13.4
 %global jsonver     1.4.0
 
 # Adds -z now to the linker flags
@@ -1900,6 +1900,7 @@ fi
 %changelog
 * Sat Aug 20 2016 Andy Thompson <andy@webtatic.com> - 7.0.10-1
 - update to php-7.0.10
+- update zipver to upstream version
 
 * Thu Jul 21 2016 Andy Thompson <andy@webtatic.com> - 7.0.9-1
 - update to php-7.0.9
