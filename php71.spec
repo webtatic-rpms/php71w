@@ -21,7 +21,7 @@
 %global fileinfover 1.0.5
 %global pharver     2.0.2
 %global zipver      1.13.4
-%global jsonver     1.4.0
+%global jsonver     1.5.0
 
 # Adds -z now to the linker flags
 %global _hardened_build 1
@@ -1914,6 +1914,7 @@ fi
 %changelog
 * Fri Sep 02 2016 Andy Thompson <andy@webtatic.com> - 7.1.0-0.2.RC1
 - update to php-7.1.0RC1
+- update jsonver to latest upstream version
 
 * Sat Aug 20 2016 Andy Thompson <andy@webtatic.com> - 7.1.0-0.1.beta3
 - fork php70w package
