@@ -14,7 +14,7 @@
 %endif
 
 # API/ABI check
-%global apiver      20151012
+%global apiver      20160303
 %global zendver     20160303
 %global pdover      20150127
 # Extension version
@@ -1914,6 +1914,7 @@ fi
 %changelog
 * Sat Sep 17 2016 Andy Thompson <andy@webtatic.com> - 7.1.0-0.3.RC2
 - update to php-7.1.0RC2
+- update apiver to latest upstream version
 
 * Fri Sep 02 2016 Andy Thompson <andy@webtatic.com> - 7.1.0-0.2.RC1
 - update to php-7.1.0RC1
