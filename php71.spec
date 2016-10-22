@@ -147,7 +147,7 @@ Patch8: php-7.0.2-libdb.patch
 
 # Functional changes
 Patch40: php-7.0.0-dlopen.patch
-Patch42: php-7.0.0-systzdata-v13.patch
+Patch42: php-7.1.0-systzdata-v14.patch
 # See http://bugs.php.net/53436
 Patch43: php-5.4.0-phpize.patch
 # Use -lldap_r for OpenLDAP
@@ -1914,6 +1914,7 @@ fi
 %changelog
 * Sat Oct 22 2016 Andy Thompson <andy@webtatic.com> - 7.1.0-0.5.RC4
 - update to php-7.1.0RC4
+- update systzdata patch for compatibility
 
 * Sun Oct 02 2016 Andy Thompson <andy@webtatic.com> - 7.1.0-0.4.RC3
 - update to php-7.1.0RC3
