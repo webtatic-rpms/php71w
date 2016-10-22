@@ -105,7 +105,7 @@
 %global db_devel  libdb-devel
 %endif
 
-%global rcver RC3
+%global rcver RC4
 
 Summary: PHP scripting language for creating dynamic web sites
 %if 0%{?scl:1}
@@ -114,7 +114,7 @@ Name: %{?scl_prefix}php
 Name: php71w
 %endif
 Version: 7.1.0
-Release: 0.4%{?rcver:.%{rcver}}%{?dist}
+Release: 0.5%{?rcver:.%{rcver}}%{?dist}
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
 # TSRM is licensed under BSD
@@ -122,7 +122,7 @@ License: PHP and Zend and BSD
 Group: Development/Languages
 URL: http://www.php.net/
 
-Source0: https://downloads.php.net/~davey/php-%{version}%{?rcver}.tar.bz2
+Source0: https://downloads.php.net/~krakjoe/php-%{version}%{?rcver}.tar.bz2
 Source1: php.conf
 Source2: php.ini
 Source3: macros.php
@@ -1912,6 +1912,9 @@ fi
 %files mysqlnd -f files.mysqlnd
 
 %changelog
+* Sat Oct 22 2016 Andy Thompson <andy@webtatic.com> - 7.1.0-0.5.RC4
+- update to php-7.1.0RC4
+
 * Sun Oct 02 2016 Andy Thompson <andy@webtatic.com> - 7.1.0-0.4.RC3
 - update to php-7.1.0RC3
 
