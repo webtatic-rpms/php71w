@@ -111,7 +111,7 @@ Name: %{?scl_prefix}php
 %else
 Name: php71w
 %endif
-Version: 7.1.3
+Version: 7.1.4
 Release: 1%{?rcver:.%{rcver}}%{?dist}
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
@@ -1910,6 +1910,9 @@ fi
 %files mysqlnd -f files.mysqlnd
 
 %changelog
+* Sat Apr 15 2017 Andy Thompson <andy@webtatic.com> - 7.1.4-1
+- update to php-7.1.4
+
 * Sun Mar 19 2017 Andy Thompson <andy@webtatic.com> - 7.1.3-1
 - update to php-7.1.3
 - Update dlopen patch with upstream changes
