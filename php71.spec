@@ -112,7 +112,7 @@ Name: %{?scl_prefix}php
 Name: php71w
 %endif
 Version: 7.1.8
-Release: 1%{?rcver:.%{rcver}}%{?dist}
+Release: 2%{?rcver:.%{rcver}}%{?dist}
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
 # TSRM is licensed under BSD
@@ -142,6 +142,7 @@ Patch7: php-5.3.0-recode.patch
 Patch8: php-7.0.2-libdb.patch
 
 # Fixes for extension modules
+Patch20: php-7.0.22-sqlite3errstr.patch
 
 # Functional changes
 Patch40: php-7.0.17-dlopen.patch
@@ -999,6 +1000,8 @@ support for using the enchant library to PHP.
 %patch6 -p1 -b .embed
 %patch7 -p1 -b .recode
 %patch8 -p1 -b .libdb
+
+%patch20 -p1 -b .sqlite3errstr
 
 %patch40 -p1 -b .dlopen
 %patch42 -p1 -b .systzdata
@@ -1910,6 +1913,9 @@ fi
 %files mysqlnd -f files.mysqlnd
 
 %changelog
+* Wed Aug 09 2017 Andy Thompson <andy@webtatic.com> - 7.1.8-2
+- add patch for missing sqlite3_errstr function
+
 * Sat Aug 05 2017 Andy Thompson <andy@webtatic.com> - 7.1.8-1
 - update to php-7.1.8
 
