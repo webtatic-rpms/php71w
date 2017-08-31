@@ -111,8 +111,8 @@ Name: %{?scl_prefix}php
 %else
 Name: php71w
 %endif
-Version: 7.1.8
-Release: 2%{?rcver:.%{rcver}}%{?dist}
+Version: 7.1.9
+Release: 1%{?rcver:.%{rcver}}%{?dist}
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
 # TSRM is licensed under BSD
@@ -1913,6 +1913,9 @@ fi
 %files mysqlnd -f files.mysqlnd
 
 %changelog
+* Thu Aug 31 2017 Andy Thompson <andy@webtatic.com> - 7.1.9-1
+- update to php-7.1.9
+
 * Wed Aug 09 2017 Andy Thompson <andy@webtatic.com> - 7.1.8-2
 - add patch for missing sqlite3_errstr function
 
