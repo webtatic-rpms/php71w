@@ -1915,6 +1915,7 @@ fi
 %changelog
 * Thu Sep 14 2017 Andy Thompson <andy@webtatic.com> - 7.1.9-2
 - add patch for sqlite3_errstr fix correction
+- rebuild for EL7.4
 
 * Thu Aug 31 2017 Andy Thompson <andy@webtatic.com> - 7.1.9-1
 - update to php-7.1.9
