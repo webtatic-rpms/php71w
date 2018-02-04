@@ -150,8 +150,6 @@ Patch42: php-7.1.0-systzdata-v14.patch
 Patch43: php-5.4.0-phpize.patch
 # Use -lldap_r for OpenLDAP
 Patch45: php-5.4.8-ldap_r.patch
-# Make php_config.h constant across builds
-Patch46: php-5.4.9-fixheader.patch
 # drop "Configure command" from phpinfo output
 Patch47: php-5.4.9-phpinfo.patch
 Patch48: php-5.5.0-icuconfig.patch
@@ -1006,7 +1004,6 @@ support for using the enchant library to PHP.
 %if 0%{?fedora} >= 18 || 0%{?rhel} >= 7
 %patch45 -p1 -b .ldap_r
 %endif
-%patch46 -p1 -b .fixheader
 %patch47 -p1 -b .phpinfo
 %patch48 -p1 -b .icuconfig
 %if 0%{?rhel} >= 6
@@ -1124,6 +1121,9 @@ echo "d %{_localstatedir}/run/php-fpm 755 root root" >php-fpm.tmpfiles
 cp -f /usr/lib/rpm/config.{guess,sub} .
 
 %build
+# Set build date from https://reproducible-builds.org/specs/source-date-epoch/
+export SOURCE_DATE_EPOCH=$(date +%s -r NEWS)
+
 %if 0%{?fedora} >= 11 || 0%{?rhel} >= 6
 # aclocal workaround - to be improved
 cat `aclocal --print-ac-dir`/{libtool,ltoptions,ltsugar,ltversion,lt~obsolete}.m4 >>aclocal.m4
@@ -1912,6 +1912,7 @@ fi
 %changelog
 * Sun Feb 04 2018 Andy Thompson <andy@webtatic.com> - 7.1.14-1
 - update to php-7.1.14
+- replace patch46 with SOURCE_DATE_EPOCH
 
 * Sun Jan 14 2018 Andy Thompson <andy@webtatic.com> - 7.1.13-1
 - update to php-7.1.13
