@@ -150,6 +150,8 @@ Patch42: php-7.1.0-systzdata-v14.patch
 Patch43: php-5.4.0-phpize.patch
 # Use -lldap_r for OpenLDAP
 Patch45: php-7.1.15-ldap_r.patch
+# Make php_config.h constant across builds
+Patch46: php-7.1.14-fixheader.patch
 # drop "Configure command" from phpinfo output
 Patch47: php-5.4.9-phpinfo.patch
 Patch48: php-5.5.0-icuconfig.patch
@@ -1004,6 +1006,7 @@ support for using the enchant library to PHP.
 %if 0%{?fedora} >= 18 || 0%{?rhel} >= 7
 %patch45 -p1 -b .ldap_r
 %endif
+%patch46 -p1 -b .fixheader
 %patch47 -p1 -b .phpinfo
 %patch48 -p1 -b .icuconfig
 %if 0%{?rhel} >= 6
@@ -1913,6 +1916,7 @@ fi
 * Fri Mar 02 2018 Andy Thompson <andy@webtatic.com> - 7.1.15-1
 - update to php-7.1.15
 - update ldap_r patch for upstream changes
+- re-add fixheader patch
 
 * Sun Feb 04 2018 Andy Thompson <andy@webtatic.com> - 7.1.14-1
 - update to php-7.1.14

@@ -1,0 +1,11 @@
+--- php-5.4.9/configure.in.fixheader	2018-03-02 12:30:04.000000000 +0000
++++ php-5.4.9/configure.in	2018-03-02 12:30:22.000000000 +0000
+@@ -1297,7 +1297,7 @@
+   AC_DEFINE_UNQUOTED(PHP_UNAME,"$PHP_UNAME",[hardcode for each of the cross compiler host])
+   ;;
+ *)
+-  PHP_UNAME=`uname -a | xargs`
++  PHP_UNAME=`uname | xargs`
+   AC_DEFINE_UNQUOTED(PHP_UNAME,"$PHP_UNAME",[uname -a output])
+   PHP_OS=`uname | xargs`
+   AC_DEFINE_UNQUOTED(PHP_OS,"$PHP_OS",[uname output])
