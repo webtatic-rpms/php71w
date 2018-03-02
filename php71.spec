@@ -149,7 +149,7 @@ Patch42: php-7.1.0-systzdata-v14.patch
 # See http://bugs.php.net/53436
 Patch43: php-5.4.0-phpize.patch
 # Use -lldap_r for OpenLDAP
-Patch45: php-5.4.8-ldap_r.patch
+Patch45: php-7.1.15-ldap_r.patch
 # drop "Configure command" from phpinfo output
 Patch47: php-5.4.9-phpinfo.patch
 Patch48: php-5.5.0-icuconfig.patch
@@ -1912,6 +1912,7 @@ fi
 %changelog
 * Fri Mar 02 2018 Andy Thompson <andy@webtatic.com> - 7.1.15-1
 - update to php-7.1.15
+- update ldap_r patch for upstream changes
 
 * Sun Feb 04 2018 Andy Thompson <andy@webtatic.com> - 7.1.14-1
 - update to php-7.1.14
