@@ -111,7 +111,7 @@ Name: %{?scl_prefix}php
 %else
 Name: php71w
 %endif
-Version: 7.1.23
+Version: 7.1.24
 Release: 1%{?rcver:.%{rcver}}%{?dist}
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
@@ -1913,6 +1913,9 @@ fi
 %files mysqlnd -f files.mysqlnd
 
 %changelog
+* Sat Nov 10 2018 Andy Thompson <andy@webtatic.com> - 7.1.24-1
+- update to php-7.1.24
+
 * Thu Oct 11 2018 Andy Thompson <andy@webtatic.com> - 7.1.23-1
 - update to php-7.1.23
 
