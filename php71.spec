@@ -111,7 +111,7 @@ Name: %{?scl_prefix}php
 %else
 Name: php71w
 %endif
-Version: 7.1.27
+Version: 7.1.28
 Release: 1%{?rcver:.%{rcver}}%{?dist}
 # All files licensed under PHP version 3.01, except
 # Zend is licensed under Zend
@@ -1903,6 +1903,9 @@ fi
 %files mysqlnd -f files.mysqlnd
 
 %changelog
+* Tue Apr 09 2019 Andy Thompson <andy@webtatic.com> - 7.1.28-1
+- update to php-7.1.28
+
 * Sat Mar 09 2019 Andy Thompson <andy@webtatic.com> - 7.1.27-1
 - update to php-7.1.27
 - drop obsolete icuconfig patch
